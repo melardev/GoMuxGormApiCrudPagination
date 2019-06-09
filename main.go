@@ -33,6 +33,7 @@ func main() {
 
 	// corsMiddleware := handlers.CORS()
 	// It is just to make it more readable, corsMiddleware(routes) is the same as handlers.CORS()(routes)
-	http.ListenAndServe(":8080", handlers.CORS()(routes.Router))
-
+	if err := http.ListenAndServe(":8080", handlers.CORS()(routes.Router)); err != nil {
+		println(err.Error())
+	}
 }
